@@ -7,13 +7,13 @@ public func JWWAssertNoThrow<T>(_ expression: @autoclosure () throws -> T,
                                 line: UInt = #line,
                                 also validateResult: (T) -> Void) {
     var result: T?
-    func executeAndAssignResult(_ expression: @autoclosure () throws -> T, to: inout T?) rethrows {
-        to = try expression()
+    func executeAndAssignResult(_ expression: @autoclosure () throws -> T, to output: inout T?) rethrows {
+        output = try expression()
     }
 
     XCTAssertNoThrow(try executeAndAssignResult(expression(), to: &result), message, file: file, line: line)
-    if let r = result {
-        validateResult(r)
+    if let result = result {
+        validateResult(result)
     }
 }
 

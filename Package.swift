@@ -8,14 +8,12 @@ let package = Package(
         .iOS(.v14),
         .macOS(.v10_15),
         .tvOS(.v14),
-        .watchOS(.v7),
+        .watchOS(.v7)
     ],
     products: [
-        .library(name: "JWWTestExtensions", targets: ["JWWTestExtensions"]),
-    ],
-    dependencies: [
+        .library(name: "JWWTestExtensions", targets: ["JWWTestExtensions"])
     ],
     targets: [
-        .target(name: "JWWTestExtensions", dependencies: []),
+        .target(name: "JWWTestExtensions")
     ]
 )
