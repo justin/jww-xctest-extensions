@@ -12,7 +12,7 @@ public extension XCTestCase {
     /// - Returns: The output of the publisher upon success.
     @discardableResult
     func await<T: Publisher>(_ publisher: T,
-                             timeout: TimeInterval = XCTestCase.defaultExpectationTimeout,
+                             timeout: TimeInterval = UITestTimeout.unitTestExpectation,
                              file: StaticString = #filePath,
                              line: UInt = #line) throws -> T.Output {
         var result: Result<T.Output, Error>?
