@@ -15,7 +15,11 @@ public final class MockURLProtocol: URLProtocol {
 
     public override func startLoading() {
         guard let stub = MockURLProtocol.stub(for: request) else {
-            XCTFail("asdf")
+            let error = URLError(.fileDoesNotExist, userInfo: [
+                NSLocalizedFailureReasonErrorKey: "A stub for the URL does not exist: \(String(describing: request.url))",
+                NSURLErrorFailingURLErrorKey: request.url as Any
+            ])
+            client?.urlProtocol(self, didFailWithError: error)
             return
         }
 
@@ -110,11 +114,7 @@ public final class MockURLProtocol: URLProtocol {
         /// Find a stub response that matches a given `URLRequest.url`.
         func stub(for request: URLRequest) -> NetworkResponseStub? {
             queue.sync { [self] in
-                for stub in stubs.reversed() where stub.url.pathComponents == request.url?.pathComponents {
-                    return stub
-                }
-
-                return nil
+                return stubs.find(for: request)
             }
         }
     }
