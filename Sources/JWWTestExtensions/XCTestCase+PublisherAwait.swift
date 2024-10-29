@@ -14,7 +14,7 @@ public extension XCTestCase {
     func await<T: Publisher>(_ publisher: T,
                              timeout: TimeInterval = UITestTimeout.unitTestExpectation,
                              file: StaticString = #filePath,
-                             line: UInt = #line) throws -> T.Output {
+                             line: UInt = #line) async throws -> T.Output {
         var result: Result<T.Output, Error>?
         let expectation = self.expectation(description: "Awaiting response from publisher under test.")
 
@@ -34,7 +34,7 @@ public extension XCTestCase {
             }
         )
 
-        waitForExpectations(timeout: timeout)
+        await fulfillment(of: [expectation], timeout: timeout)
         cancellable.cancel()
 
         let unwrappedResult = try XCTUnwrap(result, "Awaited publisher did not generate any expected output", file: file, line: line)

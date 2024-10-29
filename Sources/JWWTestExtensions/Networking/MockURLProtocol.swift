@@ -77,7 +77,7 @@ public final class MockURLProtocol: URLProtocol {
     /// Actor used to manage the list of stubbed responses that can be passed into the `MockedURLProtocol`.
     final class Storage: @unchecked Sendable {
         /// The shared instance of the Mocker, can be used to register and return mocks.
-        static var shared = Storage()
+        static let shared = Storage()
 
         /// Array of response payload stubs that can be returned by the `MockURLProtocol`.
         private(set) var stubs: [NetworkResponseStub] = []

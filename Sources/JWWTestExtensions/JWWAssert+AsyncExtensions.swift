@@ -35,7 +35,7 @@ public func JWWAssertThrowsError<T, R>(_ expression: @autoclosure () async throw
 @available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
 @inlinable
 public func JWWAssertThrowsError<T>(_ expression: @autoclosure () async throws -> T,
-                                    file: StaticString = #file,
+                                    file: StaticString = #filePath,
                                     line: UInt = #line,
                                     errorHandler: ((Error) -> Void)?) async {
     do {

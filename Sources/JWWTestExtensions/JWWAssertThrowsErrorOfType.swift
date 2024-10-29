@@ -6,7 +6,7 @@ import XCTest
 public func JWWAssertThrowsErrorOfType<T, E: Error>(_ expression: @autoclosure () throws -> T,
                                                     type: E.Type,
                                                     _ message: @autoclosure () -> String = "",
-                                                    file: StaticString = #file,
+                                                    file: StaticString = #filePath,
                                                     line: UInt = #line) {
     XCTAssertThrowsError(try expression(), message(), file: file, line: line) { (error) in
         XCTAssertNotNil(error as? E, file: file, line: line)
