@@ -14,8 +14,15 @@ let package = Package(
     products: [
         .library(name: "JWWTestExtensions", targets: ["JWWTestExtensions"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/justin/jww-core-data.git", from: "0.5.1"),
+        .package(url: "https://github.com/justin/jww-standard-lib.git", from: "1.3.0")
+    ],
     targets: [
-        .target(name: "JWWTestExtensions"),
+        .target(name: "JWWTestExtensions", dependencies: [
+            .product(name: "JWW Core Data", package: "jww-core-data"),
+            .product(name: "JWWCore", package: "jww-standard-lib")
+        ]),
         .testTarget(name: "JWWTestExtensionsTests", dependencies: [
             .targetItem(name: "JWWTestExtensions", condition: nil)
         ])

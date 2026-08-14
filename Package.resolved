@@ -1,0 +1,24 @@
+{
+  "originHash" : "b6038809786b2e172b4c12839014eec2c64d11ec3984c2f214e9c44de40368e3",
+  "pins" : [
+    {
+      "identity" : "jww-core-data",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/justin/jww-core-data.git",
+      "state" : {
+        "revision" : "bd861e044d3f3a6e062fa640585895c5601e3f4e",
+        "version" : "0.5.3"
+      }
+    },
+    {
+      "identity" : "jww-standard-lib",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/justin/jww-standard-lib.git",
+      "state" : {
+        "revision" : "a991db6f1a734ead1f0dfeaf00d01a634b0dd2a1",
+        "version" : "1.4.0"
+      }
+    }
+  ],
+  "version" : 3
+}
